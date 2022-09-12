@@ -1,0 +1,25 @@
+.search {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 3%;
+}
+
+.patients-item {
+  &__header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 10px;
+  }
+
+  &__label {
+    margin-left: 5px;
+    color: #c5c8d4;
+  }
+}
+
+.page {
+    margin-top: 3%;
+}

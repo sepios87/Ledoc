@@ -1,0 +1,8 @@
+<a *ngIf="patient" [routerLink]="['/patient/', patient.id]">
+    <div class="patient-item">
+        <p class="patient-item__label">{{patient.lastName}}</p>
+        <p class="patient-item__label">{{patient.firstName}}</p>
+        <p class="patient-item__label">{{patient.lastIncome}}</p>
+        <p class="patient-item__label">{{patient.lastSubject}}</p>
+    </div>
+</a>

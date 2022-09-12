@@ -1,0 +1,12 @@
+<section class="header">
+    <h1 class="title">Dashboard</h1>
+    <a routerLink="/patient/new" class="add" href="#">+</a>
+</section>
+<section class="widgets">
+    <app-meet-today-item class="meets"></app-meet-today-item>
+    <app-stats-item class="stats"></app-stats-item>
+    <section class="patients">
+        <h2 class="subtitle">Les derniers patients</h2>
+        <app-patients-item [max]="3"></app-patients-item>
+    </section>
+</section>

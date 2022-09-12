@@ -1,0 +1,16 @@
+<div class="patients-item">
+    <input *ngIf="max == null" class="search" type="text" (input)="search($event)" placeholder="Recherche..."/>
+
+    <div class="patients-item__header">
+        <p class="patients-item__label">Nom</p>
+        <p class="patients-item__label">Prénom</p>
+        <p class="patients-item__label">Dernière visite</p>
+        <p class="patients-item__label">Motif</p>
+    </div>
+    <app-patient-item *ngFor="let patient of getDisplayPatient()" [patient]="patient"></app-patient-item>
+    <ng-container *ngIf="max == null">
+        <button (click)="changePage(false)" *ngIf="page > 0">Précédent</button>
+        <button (click)="changePage(true)" *ngIf="hasNextPage()">Suivant</button>
+        <p class="page">Page {{page+1}} / {{getTotalPages}}</p>
+    </ng-container>
+</div>

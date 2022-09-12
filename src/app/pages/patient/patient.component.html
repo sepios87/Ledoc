@@ -1,0 +1,40 @@
+<div class="content-patient" *ngIf="patient">
+    <div class="content-patient__header">
+        <div class="name">
+            <h1>{{patient.firstName}}</h1>
+            <h2>{{patient.lastName}}</h2>
+        </div>
+        <div class="buttons">
+            <a class="button" routerLink="edit">Modifier</a>
+            <a class="button" href="tel:0606060606">Appeler</a>
+            <button (click)="delete()" class="button button--orange">Archiver</button>
+        </div>
+    </div>
+    <div class="card card--small">
+        <h3 class="subtitle">Informations</h3>
+        <ul class="list-info">
+            <li class="list-info__item">Genre : <span>{{getDictionaryItem(elementsDictionary.gender ,patient.gender)}}</span></li>
+            <li class="list-info__item">Taille : <span>{{patient.height}}</span></li>
+            <li class="list-info__item">Poids : <span>{{patient.weight}}</span> </li>
+            <li class="list-info__item">Allergies : <span>{{patient.allergies}}</span></li>
+            <li class="list-info__item">Groupe sanguin : <span>{{getDictionaryItem(elementsDictionary.bloodgroups, patient.bloodGroup)}}</span></li>
+            <li class="list-info__item">N°Sécu : <span>{{patient.socialNumber}}</span></li>
+        </ul>
+    </div>
+    <div class="card card--large">
+        <h3 class="subtitle">Notes</h3>
+        <p class="note">LOREM LA note</p>
+    </div>
+    <div class="card card--full">
+        <h3 class="subtitle">Documents</h3>
+        <ul *ngFor="let document of patient.documents">
+            <li>{{document.name}} {{document.extension}} {{document.uploadAt}}</li>
+        </ul>
+    </div>
+    <div class="card card--full">
+        <h3 class="subtitle">Traitements</h3>
+        <ul *ngFor="let treatment of patient.treatments">
+            <li>{{getDictionaryItem(elementsDictionary.drugs, treatment.drug)}} {{treatment.duration}}</li>
+        </ul>
+    </div>
+</div>

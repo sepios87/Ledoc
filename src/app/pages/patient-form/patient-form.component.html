@@ -1,0 +1,100 @@
+<form class="form" (ngSubmit)='send()' [formGroup]='patientForm' novalidate>
+  <div class="form__buttons">
+    <button type="button" class="button button--orange" (click)="delete()">Supprimer</button>
+    <input class="button" type="submit" [value]="isCreation ? 'Créer' : 'Modifier'" />
+  </div>
+  <div class="form__informations form__container">
+    <h2 class="form__title">Informations</h2>
+    <div class="form__content-info">
+      <p class="form__field">
+        <label for="firstName">Nom</label>
+        <input required type="text" name="firstName" formControlName="firstName">
+      </p>
+      <p class="form__field">
+        <label for="lastName">Prénom</label>
+        <input required type="text" name="lastName" formControlName="lastName">
+      </p>
+      <p class="form__field">
+        <label for="socialNumber">N°Sécurité sociale</label>
+        <input type="text" name="socialNumber" formControlName="socialNumber">
+      </p>
+      <p class="form__field">
+        <label for="bloodGroup">Groupe sanguin</label>
+        <select name="bloodGroup" formControlName="bloodGroup">
+          <option *ngFor="let blood of getDictionary(elementsDictionary.bloodgroups)" [ngValue]="blood.id">{{blood.label}}
+          </option>
+        </select>
+      </p>
+      <p class="form__field">
+        <label for="height">Taille</label>
+        <input type="text" name="height" formControlName="height">
+      </p>
+      <p class="form__field">
+        <label for="weight">Poids</label>
+        <input type="number" min="0" name="weight" formControlName="weight">
+      </p>
+      <p class="form__field">
+        <label for="allergies">Allergies</label>
+        <input type="text" name="allergies" formControlName="allergies">
+      </p>
+      <p class="form__field">
+        <label for="gender">Genre</label>
+        <select name="gender" formControlName="gender">
+          <option *ngFor="let gender of getDictionary(elementsDictionary.gender)" [ngValue]="gender.id">{{gender.label}}
+          </option>
+        </select>
+      </p>
+    </div>
+  </div>
+  <div class="form__container">
+    <h2 class="form__title">Notes</h2>
+    <textarea class="form__text-area" formControlName="notes"></textarea>
+  </div>
+
+  <div class="form__container treatment">
+    <h2 class="form__title">Taitements</h2>
+    <ul formArrayName="treatments" class="treatment__list">
+      <li>
+        <div class="treatment__item treatment__item--header">
+          <p>Médicament*</p>
+          <p>Répétition*</p>
+          <p>Durée*</p>
+        </div>
+      </li>
+      <li *ngFor="let treatment of treatments.controls; let i = index" [formGroupName]="i">
+        <div *ngIf="!treatment.value.isEdited" class="treatment__item">
+          <p>{{getLabelDictionaryById(elementsDictionary.drugs, treatment.value.drug)}}</p>
+          <p>
+            <ng-container *ngFor="let repeat of treatment.value.repeats; let last = last;">
+              {{getLabelDictionaryById(elementsDictionary.repeats ,repeat)}}
+              {{last ? '' : ','}}
+            </ng-container>
+          </p>
+          <p>{{getLabelDictionaryById(elementsDictionary.periods, treatment.value.duration)}}</p>
+          <img class="icon-message" (click)="changeEditTreatment(treatment, true)" src="/assets/icon/edit.png"/>
+          <img class="icon-message icon-message--orange" (click)="deleteTreatment(i)" src="/assets/icon/delete.png"/>
+        </div>
+
+        <div *ngIf="treatment.value.isEdited" class="treatment__item">
+          <select name="drug" formControlName="drug">
+            <option *ngFor="let drug of getDictionary(elementsDictionary.drugs)" [ngValue]="drug.id">{{drug.label}}
+            </option>
+          </select>
+          <select class="muti-select" formControlName="repeats" name="repeats" multiple>
+            <option *ngFor="let repeatDico of getDictionary(elementsDictionary.repeats)" [ngValue]="repeatDico.id">
+              {{repeatDico.label}}</option>
+          </select>
+          <select name="duration" formControlName="duration">
+            <option *ngFor="let duration of getDictionary(elementsDictionary.periods)" [ngValue]="duration.id">
+              {{duration.label}}</option>
+          </select>
+            <img class="icon-message icon-message--green" (click)="changeEditTreatment(treatment, false)" src="/assets/icon/check.png"/>
+          <img class="icon-message icon-message--orange" (click)="deleteTreatment(i)" src="/assets/icon/delete.png"/>
+        </div>
+
+      </li>
+
+    </ul>
+    <p (click)="addTreatment('', '', [], true)" class="treatment__button">Ajouter un traitement</p>
+  </div>
+</form>

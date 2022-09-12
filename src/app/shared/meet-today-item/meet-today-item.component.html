@@ -1,0 +1,10 @@
+<div class="meet-today">
+    <h2 class="meet-today__title"><strong class="meet-today__number">{{getNumberMeetsToday()}}</strong>Rendez-vous aujourd'hui</h2>
+    <div *ngFor="let meet of getPartOfDayMeet()" class="meet-today__item" >
+        <p>{{meet.date | date:'HH:mm'}}</p>
+        <div class="meet-today__descr" [ngClass]="{'meet-today__descr--now': isNextMeet(meet)}">
+            <p>{{meet.patient.lastName}} {{meet.patient.firstName}}</p>
+            <p>{{meet.subject}}</p>
+        </div>
+    </div>
+</div>

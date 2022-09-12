@@ -1,0 +1,35 @@
+.title {
+  font-weight: bold;
+  font-size: 36px;
+}
+
+.subtitle {
+  font-weight: normal;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 3% 5%;
+
+  .add {
+    padding: 12px 18px;
+    background: #59e1f7;
+    border-radius: 10px 10px 0px 10px;
+    font-size: 25px;
+  }
+}
+
+.widgets {
+  padding: 0 5%;
+  display: grid;
+  grid-template-columns: 60% 30%;
+  gap: 5% 10%;
+
+  .patients {
+    width: 100%;
+    grid-column: 1 / 3;
+  }
+}

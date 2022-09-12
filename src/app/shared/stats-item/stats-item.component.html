@@ -1,0 +1,40 @@
+<div class="card">
+    <h2 class="subtitle">Statistiques</h2>
+    <div class="stats-settings">
+        <p (click)="onChangeStats(Period.day)" [ngClass]="{'stats-settings__item--current': currentPeriod == Period.day}" class="stats-settings__item">1j</p>
+        <p (click)="onChangeStats(Period.week)" [ngClass]="{'stats-settings__item--current': currentPeriod == Period.week}" class="stats-settings__item">7j</p>
+        <p (click)="onChangeStats(Period.month)" [ngClass]="{'stats-settings__item--current': currentPeriod == Period.month}" class="stats-settings__item">30j</p>
+    </div>
+    <div class="card__content">
+        <div class="card__item">
+            <img class="card__image" src="/assets/icon/calend.png"/>
+            <p>{{ stat?.meeting }}</p>
+            <p>rendez-vous</p>
+        </div>
+        <div class="card__item">
+            <img class="card__image" src="/assets/icon/medical.png"/>
+            <p>{{ stat?.emergencies }}</p>
+            <p>urgences</p>
+        </div>
+        <div class="card__item">
+            <img class="card__image" src="/assets/icon/duo.png"/>
+            <p>{{ stat?.videoMeeting }}</p>
+            <p>consultations vidéo</p>
+        </div>
+        <div class="card__item">
+            <img class="card__image" src="/assets/icon/people.png"/>
+            <p>{{ stat?.availablesAssits }}</p>
+            <p>assistants disponibles</p>
+        </div>
+        <div class="card__item">
+            <img class="card__image" src="/assets/icon/ordonnance.png"/>
+            <p>{{ stat?.orders }}</p>
+            <p>ordonnances</p>
+        </div>
+        <div class="card__item">
+            <img class="card__image" src="/assets/icon/phone.png"/>
+            <p>{{ stat?.missingCalls }}</p>
+            <p>appels manqués</p>
+        </div>
+    </div>
+</div>

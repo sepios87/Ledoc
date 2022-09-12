@@ -1,0 +1,39 @@
+.meet-today {
+  background-color: #ffffff;
+  padding: 20px;
+  width: 100%;
+  border-radius: 10px;
+
+  &__title {
+    font-weight: normal;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  &__number {
+    display: block;
+    font-weight: bold;
+    font-size: 36px;
+    margin-top: 5px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    margin-bottom: 15px;
+  }
+
+  &__descr {
+    display: flex;
+    background-color: rgba(229, 229, 229, 0.5);
+    border-radius: 5px;
+    padding: 12px 18px;
+    width: 100%;
+    justify-content: space-between;
+
+    &--now {
+      background-color: #59e1f7;
+    }
+  }
+}

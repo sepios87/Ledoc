@@ -1,0 +1,51 @@
+<nav class="nav">
+    <figure class="nav__figure nav__figure--logo">
+        <img class="nav__icon" src="/assets/icon/logo.png" />
+        <figcaption>
+            LEDOC
+        </figcaption>
+    </figure>
+    <ul class="nav__list">
+        <li class="nav__item" [ngClass]="{'nav__item--current': currentUrl === ''}">
+            <a routerLink="/">
+                <figure class="nav__figure">
+                    <img class="nav__icon" src="/assets/icon/dashboard.png" />
+                    <figcaption class="nav__text">
+                        Dashboard
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+        <li class="nav__item" [ngClass]="{'nav__item--current': currentUrl === 'patient' || currentUrl === 'patients'}">
+            <a routerLink="/patients">
+                <figure class="nav__figure">
+                    <img class="nav__icon" src="/assets/icon/people.png" />
+                    <figcaption class="nav__text">
+                        Patients
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+        <li class="nav__item" [class.nav__item--current]="currentUrl === '/visites'">
+            <a href="#">
+                <figure class="nav__figure">
+                    <img class="nav__icon" src="/assets/icon/visitor.png" />
+                    <figcaption class="nav__text">
+                        Visites
+                    </figcaption>
+                </figure>
+            </a>
+        </li>
+    </ul>
+    <a href="#">
+        <figure class="nav__figure nav__item">
+            <img class="nav__icon" src="/assets/icon/compte.png" />
+            <figcaption class="nav__text">
+                Compte
+            </figcaption>
+        </figure>
+    </a>
+</nav>
+<div style="margin-left: 100px;">
+    <router-outlet></router-outlet>
+</div>
